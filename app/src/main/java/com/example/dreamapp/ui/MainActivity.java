@@ -1,4 +1,6 @@
-package com.example.dreamapp;
+package com.example.dreamapp.ui;
+
+import com.example.dreamapp.R;
 
 import android.os.Bundle;
 
