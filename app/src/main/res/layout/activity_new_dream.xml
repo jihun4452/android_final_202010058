@@ -1,19 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/main"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/new_dream_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.MainActivity">
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+        tools:context=".ui.NewDreamActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_new_dream"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:title="새 꿈 작성"
+                app:titleTextColor="@android:color/white"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:padding="16dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <EditText
+                    android:id="@+id/etDreamTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="제목을 입력하세요"/>
+
+            <EditText
+                    android:id="@+id/etDreamContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="꿈 내용을 입력하세요"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:layout_marginTop="12dp"/>
+
+            <RadioGroup
+                    android:id="@+id/rgDreamType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp">
+
+                <RadioButton
+                        android:id="@+id/rbPositive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="긍정적 꿈"/>
+                <RadioButton
+                        android:id="@+id/rbNegative"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="부정적 꿈"/>
+                <RadioButton
+                        android:id="@+id/rbNeutral"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="중립적 꿈"/>
+                <RadioButton
+                        android:id="@+id/rbLucid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="자각몽"/>
+                <RadioButton
+                        android:id="@+id/rbRecurring"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="반복 꿈"/>
+                <RadioButton
+                        android:id="@+id/rbNightmare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="악몽"/>
+                <RadioButton
+                        android:id="@+id/rbDaydream"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="백일몽"/>
+            </RadioGroup>
+
+            <CheckBox
+                    android:id="@+id/cbShowDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="해몽 설명 보기"
+                    android:layout_marginTop="12dp"/>
+
+            <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="저장"
+                    android:layout_marginTop="16dp"/>
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
