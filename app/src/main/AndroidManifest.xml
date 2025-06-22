@@ -15,7 +15,8 @@
 
         <activity
                 android:name=".ui.LandingActivity"
-                android:exported="true">
+                android:exported="true"
+                android:theme="@style/Theme.Dreamapp.Landing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
