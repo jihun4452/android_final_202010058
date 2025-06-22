@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/main"
+        android:id="@+id/main_constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_dream_gradient"
         tools:context=".ui.MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#66000000"
-            android:elevation="4dp">
-
-        <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@android:color/transparent"
-                android:title="꿈 목록"
-                android:titleTextColor="@android:color/white"/>
-    </com.google.android.material.appbar.AppBarLayout>
+    <!-- 1. 상단 툴바 -->
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            android:title="꿈 목록"
+            android:titleTextColor="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerDreams"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="0dp"
             android:clipToPadding="false"
             android:paddingBottom="80dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_dream" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAddDream"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:layout_margin="24dp"
             android:contentDescription="새 꿈 작성"
             app:srcCompat="@android:drawable/ic_input_add"
             app:backgroundTint="@color/teal_200"
             android:tint="@android:color/white"
-            app:layout_anchor="@id/recyclerDreams"
-            app:layout_anchorGravity="bottom|end"/>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="24dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

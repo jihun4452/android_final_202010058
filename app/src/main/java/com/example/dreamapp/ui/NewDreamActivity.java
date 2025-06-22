@@ -36,13 +36,12 @@ public class NewDreamActivity extends AppCompatActivity {
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 
-		repository       = new DreamRepository();
-		etDreamTitle     = findViewById(R.id.etDreamTitle);
-		etDreamContent   = findViewById(R.id.etDreamContent);
-		rgDreamType      = findViewById(R.id.rgDreamType);
+		repository = new DreamRepository();
+		etDreamTitle = findViewById(R.id.etDreamTitle);
+		etDreamContent = findViewById(R.id.etDreamContent);
+		rgDreamType = findViewById(R.id.rgDreamType);
 		cbShowDescription= findViewById(R.id.cbShowDescription);
-		btnSave          = findViewById(R.id.btnSave);
-
+		btnSave = findViewById(R.id.btnSave);
 		btnSave.setOnClickListener(this::onSaveButtonClick);
 	}
 
@@ -68,7 +67,6 @@ public class NewDreamActivity extends AppCompatActivity {
 		} else {
 			type = DreamType.NEUTRAL;
 		}
-
 
 		boolean showDesc = cbShowDescription.isChecked();
 		repository.addDream(new Dream(title, content, type, showDesc));

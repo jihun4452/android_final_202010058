@@ -64,7 +64,6 @@ public class DetailActivity extends AppCompatActivity {
 			getSupportActionBar().setTitle(title);
 		}
 
-		// 본문 및 타입 레이블 설정
 		tvDreamTitle.setText(title);
 		tvDreamContent.setText(content);
 
@@ -98,9 +97,7 @@ public class DetailActivity extends AppCompatActivity {
 		tvDreamType.setText(typeLabel);
 		ivTypeIcon.setImageResource(getIconResForType(type));
 
-		// 해몽 표시
 		if (showDesc) {
-			// 필요 시 저장된 Dream 객체 전달 또는 새로 생성
 			String explanation = DreamInterpreter.interpret(new Dream(title, content, type, true));
 			tvInterpretation.setText(explanation);
 			tvInterpretation.setVisibility(View.VISIBLE);

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 		EdgeToEdge.enable(this);
 		setContentView(R.layout.activity_main);
 
-		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_constraint), (v, insets) -> {
 			Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
 			v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
 			return insets;
