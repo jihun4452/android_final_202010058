@@ -75,14 +75,14 @@ public class DreamAdapter extends RecyclerView.Adapter<DreamAdapter.DreamViewHol
 
 		private int getIconForType(DreamType type) {
 			switch (type) {
-				case POSITIVE:   return android.R.drawable.btn_star_big_on;
-				case NEGATIVE:   return android.R.drawable.ic_delete;
-				case NEUTRAL:    return android.R.drawable.presence_invisible;
-				case LUCID:      return android.R.drawable.ic_menu_view;
-				case RECURRING:  return android.R.drawable.ic_popup_sync;
-				case NIGHTMARE:  return android.R.drawable.ic_dialog_alert;
-				case DAYDREAM:   return android.R.drawable.ic_menu_day;
-				default:         return android.R.drawable.presence_invisible;
+				case POSITIVE:   return R.drawable.img_8;
+				case NEGATIVE:   return R.drawable.img_8;
+				case NEUTRAL:    return R.drawable.img_8;
+				case LUCID:      return R.drawable.img_8;
+				case RECURRING:  return R.drawable.img_8;
+				case NIGHTMARE:  return R.drawable.img_8;
+				case DAYDREAM:   return R.drawable.img_8;
+				default: return R.drawable.img_8;
 			}
 		}
 	}

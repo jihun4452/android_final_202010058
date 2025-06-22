@@ -126,21 +126,21 @@ public class DetailActivity extends AppCompatActivity {
 	private int getIconResForType(DreamType type) {
 		switch (type) {
 			case POSITIVE:
-				return android.R.drawable.btn_star_big_on;
+				return R.drawable.img_8;
 			case NEGATIVE:
-				return android.R.drawable.ic_delete;
+				return R.drawable.img_8;
 			case NEUTRAL:
-				return android.R.drawable.presence_invisible;
+				return R.drawable.img_8;
 			case LUCID:
-				return android.R.drawable.ic_menu_view;
+				return R.drawable.img_8;
 			case RECURRING:
-				return android.R.drawable.ic_popup_sync;
+				return R.drawable.img_8;
 			case NIGHTMARE:
-				return android.R.drawable.ic_dialog_alert;
+				return R.drawable.img_8;
 			case DAYDREAM:
-				return android.R.drawable.ic_menu_day;
+				return R.drawable.img_8;
 			default:
-				return android.R.drawable.presence_invisible;
+				return R.drawable.img_8;
 		}
 	}
 }
