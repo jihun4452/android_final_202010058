@@ -1,15 +1,13 @@
 package com.example.dreamapp.ui;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioGroup;
+import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.example.dreamapp.R;
 import com.example.dreamapp.model.Dream;
@@ -20,65 +18,76 @@ public class NewDreamActivity extends AppCompatActivity {
 
 	private EditText etDreamTitle;
 	private EditText etDreamContent;
-	private RadioGroup rgDreamType;
 	private CheckBox cbShowDescription;
-	private Button btnSave;
-	private DreamRepository repository;
+
+	// 라디오 버튼
+	private RadioButton rbPositive, rbNegative, rbNeutral,
+		rbLucid, rbRecurring, rbNightmare, rbDaydream;
+
+	private DreamType selectedType = DreamType.NEUTRAL;
+	private final DreamRepository repository = new DreamRepository();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_dream);
 
-		Toolbar toolbar = findViewById(R.id.toolbar_new_dream);
-		setSupportActionBar(toolbar);
-		if (getSupportActionBar() != null) {
-			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		}
+		etDreamTitle      = findViewById(R.id.etDreamTitle);
+		etDreamContent    = findViewById(R.id.etDreamContent);
+		cbShowDescription = findViewById(R.id.cbShowDescription);
 
-		repository = new DreamRepository();
-		etDreamTitle = findViewById(R.id.etDreamTitle);
-		etDreamContent = findViewById(R.id.etDreamContent);
-		rgDreamType = findViewById(R.id.rgDreamType);
-		cbShowDescription= findViewById(R.id.cbShowDescription);
-		btnSave = findViewById(R.id.btnSave);
-		btnSave.setOnClickListener(this::onSaveButtonClick);
+		rbPositive  = findViewById(R.id.rbPositive);
+		rbNegative  = findViewById(R.id.rbNegative);
+		rbNeutral   = findViewById(R.id.rbNeutral);
+		rbLucid     = findViewById(R.id.rbLucid);
+		rbRecurring = findViewById(R.id.rbRecurring);
+		rbNightmare = findViewById(R.id.rbNightmare);
+		rbDaydream  = findViewById(R.id.rbDaydream);
+
+		Button btnSave = findViewById(R.id.btnSave);
+
+		View.OnClickListener typeClick = v -> {
+			uncheckAll();
+			((RadioButton) v).setChecked(true);
+			selectedType = mapButtonToType(v.getId());
+		};
+
+		rbPositive .setOnClickListener(typeClick);
+		rbNegative .setOnClickListener(typeClick);
+		rbNeutral  .setOnClickListener(typeClick);
+		rbLucid    .setOnClickListener(typeClick);
+		rbRecurring.setOnClickListener(typeClick);
+		rbNightmare.setOnClickListener(typeClick);
+		rbDaydream .setOnClickListener(typeClick);
+		btnSave.setOnClickListener(this::onSave);
 	}
 
-	private void onSaveButtonClick(View v) {
-		String title   = etDreamTitle.getText().toString().trim();
+	private void onSave(View v) {
+		String title   = etDreamTitle  .getText().toString().trim();
 		String content = etDreamContent.getText().toString().trim();
-		int checkedId = rgDreamType.getCheckedRadioButtonId();
-		DreamType type;
-		if (checkedId == R.id.rbPositive) {
-			type = DreamType.POSITIVE;
-		} else if (checkedId == R.id.rbNegative) {
-			type = DreamType.NEGATIVE;
-		} else if (checkedId == R.id.rbNeutral) {
-			type = DreamType.NEUTRAL;
-		} else if (checkedId == R.id.rbLucid) {
-			type = DreamType.LUCID;
-		} else if (checkedId == R.id.rbRecurring) {
-			type = DreamType.RECURRING;
-		} else if (checkedId == R.id.rbNightmare) {
-			type = DreamType.NIGHTMARE;
-		} else if (checkedId == R.id.rbDaydream) {
-			type = DreamType.DAYDREAM;
-		} else {
-			type = DreamType.NEUTRAL;
-		}
-
 		boolean showDesc = cbShowDescription.isChecked();
-		repository.addDream(new Dream(title, content, type, showDesc));
+		repository.addDream(new Dream(title, content, selectedType, showDesc));
 		finish();
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == android.R.id.home) {
-			finish();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	private void uncheckAll() {
+		rbPositive.setChecked(false);
+		rbNegative.setChecked(false);
+		rbNeutral.setChecked(false);
+		rbLucid.setChecked(false);
+		rbRecurring.setChecked(false);
+		rbNightmare.setChecked(false);
+		rbDaydream.setChecked(false);
+	}
+
+	private DreamType mapButtonToType(int id) {
+		if(id == R.id.rbPositive)  return DreamType.POSITIVE;
+		else if (id == R.id.rbNegative)  return DreamType.NEGATIVE;
+		else if (id == R.id.rbNeutral)   return DreamType.NEUTRAL;
+		else if (id == R.id.rbLucid)     return DreamType.LUCID;
+		else if (id == R.id.rbRecurring) return DreamType.RECURRING;
+		else if (id == R.id.rbNightmare) return DreamType.NIGHTMARE;
+		else if (id == R.id.rbDaydream)  return DreamType.DAYDREAM;
+		else                             return DreamType.NEUTRAL;
 	}
 }
