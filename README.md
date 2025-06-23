@@ -70,5 +70,8 @@ https://github.com/user-attachments/assets/b8ccdba8-4bc0-4160-9fd0-b10281712efe
 ### 꿈 게시물 작성 페이지
 ![image](https://github.com/user-attachments/assets/0a9e536a-95ba-4d46-91cb-49e7f00660fb)
 
+### 꿈 게시물 목록 메인
+<img width="395" alt="fin_202010058 박지훈_05" src="https://github.com/user-attachments/assets/21b410cd-0ddb-4714-a758-2ba994d35db2" />
+
 ### 꿈 게시물 상세 조회 페이지
 <img width="395" alt="image" src="https://github.com/user-attachments/assets/9b285a8f-9d81-4b1f-90d2-96f2924dd5ea" />
