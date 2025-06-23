@@ -1,5 +1,7 @@
 package com.example.dreamapp.ui;
 
+import java.time.LocalDateTime;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -72,7 +74,7 @@ public class DetailActivity extends AppCompatActivity {
 
 		boolean showDesc = getIntent().getBooleanExtra("SHOW_DESC", false);
 		if (showDesc) {
-			String explanation = DreamInterpreter.interpret(new Dream(title, content, type, true));
+			String explanation = DreamInterpreter.interpret(new Dream(title, content, type, LocalDateTime.now(), true));
 			tvInterpretation.setText(explanation);
 			tvInterpretation.setVisibility(View.VISIBLE);
 		} else {

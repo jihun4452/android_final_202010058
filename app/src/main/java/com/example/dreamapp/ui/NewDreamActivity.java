@@ -1,5 +1,7 @@
 package com.example.dreamapp.ui;
 
+import java.time.LocalDateTime;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -64,7 +66,7 @@ public class NewDreamActivity extends AppCompatActivity {
 		String title   = etDreamTitle  .getText().toString().trim();
 		String content = etDreamContent.getText().toString().trim();
 		boolean showDesc = cbShowDescription.isChecked();
-		repository.addDream(new Dream(title, content, selectedType, showDesc));
+		repository.addDream(new Dream(title, content, selectedType, LocalDateTime.now(), showDesc));
 		finish();
 	}
 

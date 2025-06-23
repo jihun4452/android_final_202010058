@@ -13,6 +13,7 @@ import com.example.dreamapp.R;
 import com.example.dreamapp.model.Dream;
 import com.example.dreamapp.model.type.DreamType;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class DreamAdapter extends RecyclerView.Adapter<DreamAdapter.DreamViewHolder> {
@@ -23,6 +24,7 @@ public class DreamAdapter extends RecyclerView.Adapter<DreamAdapter.DreamViewHol
 
 	private final List<Dream> dreams;
 	private final OnItemClickListener listener;
+	private final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
 
 	public DreamAdapter(List<Dream> dreams, OnItemClickListener listener) {
 		this.dreams = dreams;
@@ -32,21 +34,14 @@ public class DreamAdapter extends RecyclerView.Adapter<DreamAdapter.DreamViewHol
 	@NonNull
 	@Override
 	public DreamViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-		View view = LayoutInflater.from(parent.getContext())
+		View v = LayoutInflater.from(parent.getContext())
 			.inflate(R.layout.item_dream, parent, false);
-		return new DreamViewHolder(view);
+		return new DreamViewHolder(v);
 	}
 
 	@Override
-	public void onBindViewHolder(@NonNull DreamViewHolder holder, int position) {
-		holder.bind(dreams.get(position), listener);
-	}
-
-
-	public void updateData(List<Dream> newList) {
-		dreams.clear();
-		dreams.addAll(newList);
-		notifyDataSetChanged();
+	public void onBindViewHolder(@NonNull DreamViewHolder holder, int pos) {
+		holder.bind(dreams.get(pos), listener, fmt);
 	}
 
 	@Override
@@ -54,36 +49,34 @@ public class DreamAdapter extends RecyclerView.Adapter<DreamAdapter.DreamViewHol
 		return dreams.size();
 	}
 
+	public void updateData(List<Dream> newList) {
+		dreams.clear();
+		dreams.addAll(newList);
+		notifyDataSetChanged();
+	}
+
 	static class DreamViewHolder extends RecyclerView.ViewHolder {
-		private final TextView tvTitle;
-		private final TextView tvContent;
+		private final TextView tvTitle, tvContent, tvCreatedAt;
 		private final ImageView ivTypeIcon;
 
 		DreamViewHolder(@NonNull View itemView) {
 			super(itemView);
 			tvTitle     = itemView.findViewById(R.id.tvDreamTitle);
+			tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
 			tvContent   = itemView.findViewById(R.id.tvDreamContent);
 			ivTypeIcon  = itemView.findViewById(R.id.ivTypeIcon);
 		}
 
-		void bind(Dream dream, OnItemClickListener listener) {
-			tvTitle.setText(dream.getTitle());
-			tvContent.setText(dream.getContent());
-			ivTypeIcon.setImageResource(getIconForType(dream.getType()));
-			itemView.setOnClickListener(v -> listener.onItemClick(dream));
+		void bind(Dream d, OnItemClickListener l, DateTimeFormatter fmt) {
+			tvTitle.setText(d.getTitle());
+			tvCreatedAt.setText(fmt.format(d.getCreatedAt()));
+			tvContent.setText(d.getContent());
+			ivTypeIcon.setImageResource(icon(d.getType()));
+			itemView.setOnClickListener(v -> l.onItemClick(d));
 		}
 
-		private int getIconForType(DreamType type) {
-			switch (type) {
-				case POSITIVE:   return R.drawable.img_8;
-				case NEGATIVE:   return R.drawable.img_8;
-				case NEUTRAL:    return R.drawable.img_8;
-				case LUCID:      return R.drawable.img_8;
-				case RECURRING:  return R.drawable.img_8;
-				case NIGHTMARE:  return R.drawable.img_8;
-				case DAYDREAM:   return R.drawable.img_8;
-				default: return R.drawable.img_8;
-			}
+		private int icon(DreamType t) {
+			return R.drawable.img_8;
 		}
 	}
 }
