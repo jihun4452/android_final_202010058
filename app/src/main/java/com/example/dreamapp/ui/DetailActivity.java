@@ -30,6 +30,10 @@ public class DetailActivity extends AppCompatActivity {
 
 		Toolbar toolbar = findViewById(R.id.toolbar_detail);
 		setSupportActionBar(toolbar);
+		if (getSupportActionBar() != null) {
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+			getSupportActionBar().setTitle("꿈 게시물");
+		}
 
 		tvDreamTitle = findViewById(R.id.tvDreamTitle);
 		tvDreamContent = findViewById(R.id.tvDreamContent);
@@ -38,65 +42,35 @@ public class DetailActivity extends AppCompatActivity {
 		ivTypeIcon = findViewById(R.id.ivTypeIcon);
 
 		String title = getIntent().getStringExtra("DREAM_TITLE");
-		if (title == null || title.isEmpty()) {
-			title = "제목 없음";
-		}
+		if (title == null || title.isEmpty()) title = "제목 없음";
+		tvDreamTitle.setText(title);
+
 		String content = getIntent().getStringExtra("DREAM_TEXT");
-		if (content == null)
-			content = "";
+		if (content == null) content = "게시물의 내용이 없습니다.";
+		tvDreamContent.setText(content);
 
 		String typeStr = getIntent().getStringExtra("DREAM_TYPE");
 		DreamType type;
-		if (typeStr != null) {
-			try {
-				type = DreamType.valueOf(typeStr);
-			} catch (IllegalArgumentException e) {
-				type = DreamType.NEUTRAL;
-			}
-		} else {
+		try {
+			type = typeStr == null ? DreamType.NEUTRAL : DreamType.valueOf(typeStr);
+		} catch (IllegalArgumentException e) {
 			type = DreamType.NEUTRAL;
 		}
 
-		boolean showDesc = getIntent().getBooleanExtra("SHOW_DESC", false);
-
-		if (getSupportActionBar() != null) {
-			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-			getSupportActionBar().setTitle(title);
-		}
-
-		tvDreamTitle.setText(title);
-		tvDreamContent.setText(content);
-
 		String typeLabel;
 		switch (type) {
-			case POSITIVE:
-				typeLabel = "긍정적 꿈";
-				break;
-			case NEGATIVE:
-				typeLabel = "부정적 꿈";
-				break;
-			case NEUTRAL:
-				typeLabel = "중립적 꿈";
-				break;
-			case LUCID:
-				typeLabel = "자각몽";
-				break;
-			case RECURRING:
-				typeLabel = "반복 꿈";
-				break;
-			case NIGHTMARE:
-				typeLabel = "악몽";
-				break;
-			case DAYDREAM:
-				typeLabel = "백일몽";
-				break;
-			default:
-				typeLabel = "기타";
-				break;
+			case POSITIVE:  typeLabel = "긍정적 꿈"; break;
+			case NEGATIVE:  typeLabel = "부정적 꿈"; break;
+			case LUCID:     typeLabel = "자각몽";  break;
+			case RECURRING: typeLabel = "반복 꿈";  break;
+			case NIGHTMARE: typeLabel = "악몽";    break;
+			case DAYDREAM:  typeLabel = "백일몽";  break;
+			default:        typeLabel = "중립적 꿈"; break;
 		}
 		tvDreamType.setText(typeLabel);
 		ivTypeIcon.setImageResource(getIconResForType(type));
 
+		boolean showDesc = getIntent().getBooleanExtra("SHOW_DESC", false);
 		if (showDesc) {
 			String explanation = DreamInterpreter.interpret(new Dream(title, content, type, true));
 			tvInterpretation.setText(explanation);
@@ -124,23 +98,6 @@ public class DetailActivity extends AppCompatActivity {
 	}
 
 	private int getIconResForType(DreamType type) {
-		switch (type) {
-			case POSITIVE:
-				return R.drawable.img_8;
-			case NEGATIVE:
-				return R.drawable.img_8;
-			case NEUTRAL:
-				return R.drawable.img_8;
-			case LUCID:
-				return R.drawable.img_8;
-			case RECURRING:
-				return R.drawable.img_8;
-			case NIGHTMARE:
-				return R.drawable.img_8;
-			case DAYDREAM:
-				return R.drawable.img_8;
-			default:
-				return R.drawable.img_8;
-		}
+		return R.drawable.img_8;
 	}
 }

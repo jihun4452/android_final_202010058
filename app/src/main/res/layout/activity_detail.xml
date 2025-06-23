@@ -2,56 +2,47 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/detail_root"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/detail_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_dream_gradient">
+        android:background="@drawable/landing_background">
 
-    <!-- 툴바 -->
     <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_detail"
             android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
-            android:background="#6200EE"
             android:titleTextColor="@android:color/white"
+            app:titleTextAppearance="@style/TextAppearance.Toolbar.EfJeju"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- 제목 -->
 
-    <!-- 내용 -->
-
-    <!-- 아이콘 -->
-
-    <!-- 타입 텍스트 -->
-
-    <!-- 해몽 -->
     <TextView
             android:id="@+id/tvDreamTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="303dp"
+            android:layout_height="62dp"
             android:textSize="25dp"
-            android:textStyle="bold"
             android:textColor="@android:color/white"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             app:layout_constraintTop_toBottomOf="@id/toolbar_detail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="44dp"/>
+            android:layout_marginTop="36dp" android:fontFamily="@font/cookierunregular" android:textAlignment="center"/>
     <TextView
             android:id="@+id/tvDreamContent"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="348dp"
+            android:layout_height="84dp"
             android:textSize="20dp"
             android:textColor="@android:color/white"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="52dp"
             app:layout_constraintTop_toBottomOf="@id/tvDreamTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.492"
+            android:fontFamily="@font/cookierunregular" android:textAlignment="center"/>
     <TextView
             android:id="@+id/tvDreamType"
             android:layout_width="107dp"
@@ -61,8 +52,8 @@
             android:layout_marginStart="8dp"
             app:layout_constraintTop_toBottomOf="@id/tvDreamContent"
             app:layout_constraintStart_toEndOf="@id/ivTypeIcon"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="96dp"
-            app:layout_constraintHorizontal_bias="0.288"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="84dp"
+            app:layout_constraintHorizontal_bias="0.175" android:fontFamily="@font/cookierunregular"/>
     <ImageView
             android:id="@+id/ivTypeIcon"
             android:layout_width="32dp"
@@ -70,20 +61,41 @@
             android:tint="@android:color/white"
             app:layout_constraintTop_toBottomOf="@id/tvDreamContent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="108dp" android:layout_marginTop="96dp"/>
+            android:layout_marginStart="116dp" android:layout_marginTop="84dp"/>
     <TextView
             android:id="@+id/tvInterpretation"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="15sp"
+            android:textStyle="italic"
             android:textColor="@android:color/white"
+            android:fontFamily="@font/cookierunregular"
+            android:textAlignment="center"
             android:visibility="gone"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="120dp"
             app:layout_constraintTop_toBottomOf="@id/tvDreamType"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"/>
+
+    <ImageView
+            android:layout_width="342dp"
+            android:layout_height="433dp" app:srcCompat="@drawable/img_2" android:id="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@+id/toolbar_detail"
+            android:layout_marginTop="120dp" android:layout_marginEnd="200dp"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/img_1" android:id="@+id/imageView7"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="200dp" android:layout_marginBottom="164dp"/>
+    <ImageView
+            android:layout_width="322dp"
+            android:layout_height="344dp" app:srcCompat="@drawable/img_9" android:id="@+id/imageView8"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="552dp"
+            android:layout_marginStart="212dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

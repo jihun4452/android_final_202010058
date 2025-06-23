@@ -52,12 +52,15 @@
             android:layout_height="44dp"
             android:text="기록 시작"
             android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textStyle="bold"
+            app:cornerRadius="22dp"
+            app:backgroundTint="#00C4B4"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="64dp" app:backgroundTint="#00C4B4" android:textStyle="bold"/>
+            android:layout_marginBottom="64dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
     <ImageView
             android:layout_width="386dp"
             android:layout_height="397dp" app:srcCompat="@drawable/img_1" android:id="@+id/imageView4"

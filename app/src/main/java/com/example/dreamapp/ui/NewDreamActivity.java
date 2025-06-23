@@ -20,9 +20,7 @@ public class NewDreamActivity extends AppCompatActivity {
 	private EditText etDreamContent;
 	private CheckBox cbShowDescription;
 
-	// 라디오 버튼
-	private RadioButton rbPositive, rbNegative, rbNeutral,
-		rbLucid, rbRecurring, rbNightmare, rbDaydream;
+	private RadioButton rbPositive, rbNegative, rbNeutral, rbLucid, rbRecurring, rbNightmare, rbDaydream;
 
 	private DreamType selectedType = DreamType.NEUTRAL;
 	private final DreamRepository repository = new DreamRepository();
@@ -88,6 +86,6 @@ public class NewDreamActivity extends AppCompatActivity {
 		else if (id == R.id.rbRecurring) return DreamType.RECURRING;
 		else if (id == R.id.rbNightmare) return DreamType.NIGHTMARE;
 		else if (id == R.id.rbDaydream)  return DreamType.DAYDREAM;
-		else                             return DreamType.NEUTRAL;
+		else return DreamType.NEUTRAL;
 	}
 }
