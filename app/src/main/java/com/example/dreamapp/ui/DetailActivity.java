@@ -61,13 +61,13 @@ public class DetailActivity extends AppCompatActivity {
 
 		String typeLabel;
 		switch (type) {
-			case POSITIVE:  typeLabel = "긍정적 꿈"; break;
-			case NEGATIVE:  typeLabel = "부정적 꿈"; break;
-			case LUCID:     typeLabel = "자각몽";  break;
-			case RECURRING: typeLabel = "반복 꿈";  break;
-			case NIGHTMARE: typeLabel = "악몽";    break;
-			case DAYDREAM:  typeLabel = "백일몽";  break;
-			default:        typeLabel = "중립적 꿈"; break;
+			case POSITIVE:typeLabel = "긍정적 꿈"; break;
+			case NEGATIVE:typeLabel = "부정적 꿈"; break;
+			case LUCID:typeLabel = "자각몽";  break;
+			case RECURRING:typeLabel = "반복 꿈";  break;
+			case NIGHTMARE:typeLabel = "악몽";    break;
+			case DAYDREAM:typeLabel = "백일몽";  break;
+			default:typeLabel = "중립적 꿈"; break;
 		}
 		tvDreamType.setText(typeLabel);
 		ivTypeIcon.setImageResource(getIconResForType(type));

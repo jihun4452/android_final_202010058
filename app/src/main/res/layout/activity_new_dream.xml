@@ -2,9 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/landing_background">
+        android:background="@drawable/bg_sunset_gradient">
+
+    <ImageView
+            android:id="@+id/ivCloud"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/png32"
+            android:scaleType="centerCrop"
+            android:alpha="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
             android:id="@+id/labelHeader"
@@ -15,51 +27,55 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:fontFamily="@font/ef_jejudoldam"
+            android:layout_marginTop="72dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="72dp" app:layout_constraintHorizontal_bias="0.496"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
+
     <EditText
             android:id="@+id/etDreamTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="제목을 입력하세요"
+            android:hint="너의 꿈의 주제를 입력해줘!"
             android:textColor="@android:color/white"
             android:background="@drawable/bg_input_round"
             android:padding="12dp"
-            app:layout_constraintTop_toBottomOf="@id/labelHeader"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="24dp" app:layout_constraintHorizontal_bias="0.0"/>
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/labelHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:fontFamily="@font/cookierunregular"
+    />
+
     <EditText
             android:id="@+id/etDreamContent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:minLines="4"
-            android:hint="꿈 내용을 입력하세요"
+            android:hint="꿈의 내용을 입력해줄래?"
             android:inputType="textMultiLine"
             android:textColor="@android:color/white"
             android:background="@drawable/bg_input_round"
             android:padding="12dp"
-            app:layout_constraintTop_toBottomOf="@id/etDreamTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginTop="24dp" app:layout_constraintHorizontal_bias="0.0"/>
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/etDreamTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:fontFamily="@font/cookierunregular"/>
+
     <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/flexDreamType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             app:flexWrap="wrap"
             app:justifyContent="center"
             app:flexDirection="row"
             app:layout_constraintTop_toBottomOf="@id/etDreamContent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="40dp">
+            app:layout_constraintEnd_toEndOf="parent">
 
         <RadioButton
                 android:id="@+id/rbPositive"
@@ -125,20 +141,24 @@
             android:layout_height="wrap_content"
             android:text="해몽 설명 보기"
             android:textColor="@android:color/white"
+            android:layout_marginTop="36dp"
             app:layout_constraintTop_toBottomOf="@id/flexDreamType"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="36dp"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
+
     <Button
             android:id="@+id/btnSave"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="저장"
+            android:layout_width="338dp"
+            android:layout_height="40dp"
+            android:text="꿈 전송"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_btn_round"
+            android:backgroundTint="@null"
+            android:fontFamily="@font/cookierunregular"
+            android:textSize="15sp"
+            android:layout_marginTop="36dp"
             app:layout_constraintTop_toBottomOf="@id/cbShowDescription"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginTop="36dp" app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

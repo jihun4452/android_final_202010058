@@ -32,17 +32,17 @@ public class NewDreamActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_dream);
 
-		etDreamTitle      = findViewById(R.id.etDreamTitle);
-		etDreamContent    = findViewById(R.id.etDreamContent);
-		cbShowDescription = findViewById(R.id.cbShowDescription);
+		etDreamTitle= findViewById(R.id.etDreamTitle);
+		etDreamContent= findViewById(R.id.etDreamContent);
+		cbShowDescription= findViewById(R.id.cbShowDescription);
 
-		rbPositive  = findViewById(R.id.rbPositive);
-		rbNegative  = findViewById(R.id.rbNegative);
-		rbNeutral   = findViewById(R.id.rbNeutral);
-		rbLucid     = findViewById(R.id.rbLucid);
-		rbRecurring = findViewById(R.id.rbRecurring);
-		rbNightmare = findViewById(R.id.rbNightmare);
-		rbDaydream  = findViewById(R.id.rbDaydream);
+		rbPositive= findViewById(R.id.rbPositive);
+		rbNegative= findViewById(R.id.rbNegative);
+		rbNeutral= findViewById(R.id.rbNeutral);
+		rbLucid= findViewById(R.id.rbLucid);
+		rbRecurring= findViewById(R.id.rbRecurring);
+		rbNightmare= findViewById(R.id.rbNightmare);
+		rbDaydream= findViewById(R.id.rbDaydream);
 
 		Button btnSave = findViewById(R.id.btnSave);
 
@@ -52,20 +52,20 @@ public class NewDreamActivity extends AppCompatActivity {
 			selectedType = mapButtonToType(v.getId());
 		};
 
-		rbPositive .setOnClickListener(typeClick);
-		rbNegative .setOnClickListener(typeClick);
-		rbNeutral  .setOnClickListener(typeClick);
-		rbLucid    .setOnClickListener(typeClick);
+		rbPositive.setOnClickListener(typeClick);
+		rbNegative.setOnClickListener(typeClick);
+		rbNeutral.setOnClickListener(typeClick);
+		rbLucid.setOnClickListener(typeClick);
 		rbRecurring.setOnClickListener(typeClick);
 		rbNightmare.setOnClickListener(typeClick);
-		rbDaydream .setOnClickListener(typeClick);
+		rbDaydream.setOnClickListener(typeClick);
 		btnSave.setOnClickListener(this::onSave);
 	}
 
 	private void onSave(View v) {
-		String title   = etDreamTitle  .getText().toString().trim();
-		String content = etDreamContent.getText().toString().trim();
-		boolean showDesc = cbShowDescription.isChecked();
+		String title= etDreamTitle  .getText().toString().trim();
+		String content= etDreamContent.getText().toString().trim();
+		boolean showDesc= cbShowDescription.isChecked();
 		repository.addDream(new Dream(title, content, selectedType, LocalDateTime.now(), showDesc));
 		finish();
 	}
@@ -81,13 +81,13 @@ public class NewDreamActivity extends AppCompatActivity {
 	}
 
 	private DreamType mapButtonToType(int id) {
-		if(id == R.id.rbPositive)  return DreamType.POSITIVE;
-		else if (id == R.id.rbNegative)  return DreamType.NEGATIVE;
-		else if (id == R.id.rbNeutral)   return DreamType.NEUTRAL;
-		else if (id == R.id.rbLucid)     return DreamType.LUCID;
+		if(id == R.id.rbPositive) return DreamType.POSITIVE;
+		else if (id == R.id.rbNegative) return DreamType.NEGATIVE;
+		else if (id == R.id.rbNeutral) return DreamType.NEUTRAL;
+		else if (id == R.id.rbLucid) return DreamType.LUCID;
 		else if (id == R.id.rbRecurring) return DreamType.RECURRING;
 		else if (id == R.id.rbNightmare) return DreamType.NIGHTMARE;
-		else if (id == R.id.rbDaydream)  return DreamType.DAYDREAM;
+		else if (id == R.id.rbDaydream) return DreamType.DAYDREAM;
 		else return DreamType.NEUTRAL;
 	}
 }

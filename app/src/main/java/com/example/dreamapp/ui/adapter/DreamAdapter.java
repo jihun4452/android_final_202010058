@@ -61,10 +61,10 @@ public class DreamAdapter extends RecyclerView.Adapter<DreamAdapter.DreamViewHol
 
 		DreamViewHolder(@NonNull View itemView) {
 			super(itemView);
-			tvTitle     = itemView.findViewById(R.id.tvDreamTitle);
-			tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
-			tvContent   = itemView.findViewById(R.id.tvDreamContent);
-			ivTypeIcon  = itemView.findViewById(R.id.ivTypeIcon);
+			tvTitle= itemView.findViewById(R.id.tvDreamTitle);
+			tvCreatedAt= itemView.findViewById(R.id.tvCreatedAt);
+			tvContent= itemView.findViewById(R.id.tvDreamContent);
+			ivTypeIcon= itemView.findViewById(R.id.ivTypeIcon);
 		}
 
 		void bind(Dream d, OnItemClickListener l, DateTimeFormatter fmt) {
