@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools" android:id="@+id/detail_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/landing_background">
+        android:background="@drawable/bg_evening_gradient">
 
     <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_detail"
@@ -98,4 +98,11 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="552dp"
             android:layout_marginStart="212dp"/>
+    <ImageView
+            android:layout_width="104dp"
+            android:layout_height="88dp" app:srcCompat="@drawable/img_16" android:id="@+id/imageView15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.038" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.086"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
